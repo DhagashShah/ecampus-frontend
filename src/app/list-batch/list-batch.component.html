@@ -1,0 +1,42 @@
+<div class="col-sm-12">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Batches</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Batch List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" *ngIf="batch" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Faculty</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let u of batch">
+                            <td>{{u.batchid}}</td>
+                            <td>{{u.name}}</td>
+                            <td>{{u.coursename}}</td>
+                            <td>{{u.firstname}}</td>
+                            <td>{{u.time}}</td>
+                            <td>{{u.duration}}</td>
+                            <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/getbatchbyid',u.batchid]">Click Here</button></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="col-sm-12">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h5>New User</h5>
+                <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+            </div>
+            <div class="card-block">
+                <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="text" name="footer-email" class="form-control" placeholder="First Name"
+                                    formControlName="firstname">
+                                <span class="form-bar"></span>
+                                <label class="float-label">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="text" name="footer-email" class="form-control" placeholder="Last Name"
+                                    formControlName="lastname">
+                                <span class="form-bar"></span>
+                                <label class="float-label">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="email" name="footer-email" class="form-control" placeholder="Email"
+                                    formControlName="email">
+                                <span class="form-bar"></span>
+                                <label class="float-label">Email</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="password" name="footer-email" class="form-control" placeholder="Password"
+                                    formControlName="password">
+                                <span class="form-bar"></span>
+                                <label class="float-label">Password</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control" formControlName="gender">
+                                        <option value="" disabled>Select Gender</option>
+                                        <option value="m">Male</option>
+                                        <option value="f">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="text" name="footer-email" class="form-control" placeholder="8573895348"
+                                    formControlName="contact">
+                                <span class="form-bar"></span>
+                                <label class="float-label">Contact</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control" formControlName="roleid">
+                                        <option value="" disabled>Select Role</option>
+                                        <option *ngFor="let r of roles" value="{{r.roleid}}">{{r.rolename}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<!-- Begin Page Content -->
+<div class="col-sm-12">
+    <!-- Tooltips on textbox card start -->
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Add Course</h5>
+                <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+            </div>
+            <div class="card-block">
+                <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
+                    <div class="form-group form-default form-static-label">
+                        <input type="text" name="footer-email" class="form-control" placeholder="Enter Course"
+                            formControlName="coursename">
+                        <span class="form-bar"></span>
+                        <label class="float-label">Course Name</label>
+                    </div>
+                    <div class="form-group form-default form-static-label">
+                        <input type="text" name="footer-email" class="form-control" placeholder="Duration"
+                            formControlName="duration">
+                        <span class="form-bar"></span>
+                        <label class="float-label">Duration (1 month)</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip"
+                        data-placement="right" title="submit">Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Courses</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <div class="container" *ngIf="course">
+        <div class="row">
+            <div class="col-6 col-sm-4" *ngFor="let c of course">
+                <div class="card mb-3  " style="max-width: 18rem;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">{{c.coursename}}</h5>
+                        <p class="card-text">
+                            <strong>Duration : </strong>{{c.duration}}
+                        </p>
+                    </div>
+                    <div class="card-header bg-transparent ">
+                        <a class="link-primary text-primary" href="#"><strong>Know More</strong> &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- DataTales Example -->
+    <!-- <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Coure List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table *ngIf="course" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Duartion</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let c of course">
+                            <td>{{c.courseid}}</td>
+                            <td>{{c.coursename}}</td>
+                            <td>{{c.duration}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> -->
+</div>

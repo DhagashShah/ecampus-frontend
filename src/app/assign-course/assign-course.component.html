@@ -1,0 +1,45 @@
+<div class="col-sm-12">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h5>Assign Course</h5>
+                <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+            </div>
+            <div class="card-block">
+                <form class="form-material" *ngIf="myform"  [formGroup]="myform" (ngSubmit)="submit()">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control"  formControlName="userid">
+                                        <option value="-1" >Select Student</option>
+                                        <option *ngFor="let s of student" value="{{s.userid}}">{{s.firstname}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control" multiple formControlName="courseid">
+                                        <option value="-1"  >Select Course</option>
+                                        <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
