@@ -1,0 +1,121 @@
+<div class="col-sm-12">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h5>Assign Task</h5>
+                <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+            </div>
+            <div class="card-block">
+                <form class="form-material" *ngIf="myform"  [formGroup]="myform" (ngSubmit)="submit()">
+
+                    <div class="row">
+                        
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control" formControlName="taskid">
+                                        <option value="">Select Task</option>
+                                        <option *ngFor="let c of task" value="{{c.taskid}}">{{c.taskname}} | {{c.coursename}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <select name="select" class="form-control" formControlName="batchid">
+                                        <option value="">Select Batch</option>
+                                        <option *ngFor="let c of batch" value="{{c.batchid}}">{{c.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="date" name="footer-email" class="form-control" placeholder="Submission Date"
+                                    formControlName="sdate">
+                                <span class="form-bar"></span>
+                                <label class="float-label"></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="text" name="footer-email" class="form-control" placeholder="Marks"
+                                    formControlName="marks">
+                                <span class="form-bar"></span>
+                                <label class="float-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-default form-static-label">
+                                <input type="text" name="footer-email" class="form-control" placeholder="Comments"
+                                    formControlName="comments">
+                                <span class="form-bar"></span>
+                                <label class="float-label"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Task Assigned</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <!-- DataTales Example -->
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Task</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Batch</th>
+                            <th>Task</th>
+                            <th>Path</th>
+                            <th>Assign Date</th>
+                            <th>Submission Date</th>
+                            <th>Marks</th>
+                            <th>Comments</th>
+                            <th>Details</th>
+                            <!-- <th>Action</th>
+                            <th>Delete</th> -->
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let u of batchtask">
+                            <td>{{u.btid}}</td>
+                            <td>{{u.name}}</td>
+                            <td>{{u.taskname}}</td>
+                            <td>{{u.path}}</td>
+                            <td>{{u.adate | date}}</td>
+                            <td>{{u.sdate | date}}</td>
+                            <td>{{u.marks}}</td>
+                            <td>{{u.comments}}</td>
+                            <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/faculty/faculty-task-students',u.btid]">View Details</button></td>
+                            <!-- <td><button type="button" class="btn btn-outline-info" [routerLink]="['/faculty/faculty-assign-task/edit',u.btid]">Edit</button></td>
+                            <td><button type="button" class="btn btn-outline-danger" (click)="delete(u.btid)">Delete</button></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

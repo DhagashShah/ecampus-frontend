@@ -6,7 +6,7 @@
             <h1 class="h3 mb-0 text-gray-800">{{batch.name}}</h1>
         </div>
 
-        <div class="row" >
+        <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
             <!-- <div class="col-xl-3 col-md-6 mb-4">
@@ -243,58 +243,83 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
 
-        
+
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Students</h1>
         </div>
 
-        <div class="card shadow mb-4" *ngIf="batch">
+        <div class="card shadow mb-4 my-3" *ngIf="batch">
             <div class="card-header py-3">
                 <div class="">
-                    <!-- Trigger the modal with a button -->
-                    <button type="button" class="btn btn-primary btn-md" (click)="add(batch.courseid)" data-toggle="modal" data-target="#myModal">Add</button>
-                  
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                      <div class="modal-dialog">
-                      
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h4 class="modal-title">Add Students</h4>
-                          </div>
-                          <div class="modal-body">
-                            <div class="d">
-                                <form [formGroup]="myform" (ngSubmit)="submit()">
-                                  <label for="fname">Batch ID</label>
-                                  <input type="text" id="fname" formControlName="batchid"  value="{{batch.batchid}}">
-                              
-                                  <label for="country">Students</label>
-                                  <select id="country" name="country" formControlName="userid" multiple>
-                                    <option *ngFor="let s of studentCourse"   value="{{s.userid}}">{{s.firstname}}</option>
-                                  </select>
-                                
-                                  <input type="submit" value="Submit">
-                                </form>
-                              </div>
+                    <button type="button" class="btn btn-outline-primary btn-md" data-toggle="modal"
+                        (click)="add(batch.courseid,batch.batchid)" data-target="#myModal1">Add Students</button>
+
+
+                    <div class="modal fade" id="myModal1" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+
+                                <div class="modal-body">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Assign Batch</h5>
+                                        </div>
+                                        <div class="card-block">
+                                            <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
+
+                                                <input type="text" formControlName="batchid" hidden
+                                                    value="{{batch.batchid}}">
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group form-default form-static-label">
+                                                                    <select multiple formControlName="userid">
+                                                                        <option value="-1" disabled>Select Student
+                                                                        </option>
+                                                                        <option *ngFor="let s of studentCourse"
+                                                                            value="{{s.userid}}">
+                                                                            {{s.firstname}}
+                                                                        </option>
+                                                                    </select>
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <button type="submit"
+                                                    class="btn btn-primary waves-effect waves-light m-r-20"
+                                                    data-toggle="tooltip" data-placement="right" title="submit">Add
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
                         </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          </div>
-                        </div>
-                        
-                      </div>
                     </div>
-                    
-                  </div>
-                  
+                </div>
+
             </div>
-            <div class="card-body" *ngIf="studentBatch">
-                <div class="table-responsive">
+
+            <div class="card-body">
+                <div class="table-responsive" *ngIf="studentBatch">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -302,6 +327,8 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
+                                <th>Contact</th>
+                                <th>Action</th>
 
                             </tr>
                         </thead>
@@ -312,12 +339,28 @@
                                 <td>{{i.firstname}}</td>
                                 <td>{{i.lastname}}</td>
                                 <td>{{i.email}}</td>
+                                <td>{{i.contact}}</td>
+                                <td><button type="button" class="btn btn-outline-danger" (click)="delete(i.userid)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z">
+                                            </path>
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z">
+                                            </path>
+                                        </svg>
+                                        Delete
+                                    </button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+
         </div>
+
     </div>
     <!-- /.container-fluid -->
 

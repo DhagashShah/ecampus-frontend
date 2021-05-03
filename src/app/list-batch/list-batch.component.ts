@@ -10,7 +10,6 @@ import { DataService } from '../data.service';
 export class ListBatchComponent implements OnInit {
 
   batch:{};
-  myform:FormGroup;
   constructor(private service:DataService) { }
 
   ngOnInit()
@@ -19,16 +18,8 @@ export class ListBatchComponent implements OnInit {
     this.service.getbatch().then(res =>{
       this.batch=res.data;
     })
-
-    this.myform=new FormGroup({
-      userid:new FormControl("",Validators.required),
-      batchid:new FormControl("",Validators.required)
-    })
   }
   
-  submit()
-  {
-      console.log(this.myform.value);
-  }
+  
 
 }

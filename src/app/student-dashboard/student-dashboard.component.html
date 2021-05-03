@@ -1,0 +1,51 @@
+<div class="col-sm-12">
+
+    <h1 class="h3 mb-2 text-gray-800">Courses</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <div class="container" *ngIf="course">
+        <div class="row">
+            <div class="col-6 col-sm-4" *ngFor="let c of course">
+                <div class="card mb-3  " style="max-width: 18rem;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">{{c.coursename}}</h5>
+                        <p class="card-text">
+                            <strong>Duration : </strong>{{c.duration}}
+                        </p>
+                    </div>
+                    <div class="card-header bg-transparent ">
+                        <a class="link-primary text-primary"
+                            [routerLink]="['/student/student-view-notes',c.courseid]"><strong>View Notes</strong>&rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h1 class="h3 mb-2 text-gray-800">Batches</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <div class="container" *ngIf="batch">
+        <div class="row">
+            <div class="col-6 col-sm-4" *ngFor="let c of batch">
+                <div class="card mb-3  " style="max-width: 18rem;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">{{c.name}}</h5>
+                        <p class="card-text">
+                            <strong>Time : </strong>{{c.time}}<br><br>
+                            <a class="link-primary text-primary"
+                                [routerLink]="['/student/student-view-task',c.batchid]"><strong>View
+                                    Task</strong>&rarr;</a>
+                        </p>
+                    </div>
+                    <div class="card-header bg-transparent ">
+                        <a class="link-primary text-primary"><strong>Faculty : </strong>{{c.firstname}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

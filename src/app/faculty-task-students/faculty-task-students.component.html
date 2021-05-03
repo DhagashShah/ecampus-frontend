@@ -1,0 +1,65 @@
+<div class="col-sm-12">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Task Details</h1>
+    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+    <!-- DataTales Example -->
+    
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students Submitted Task</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Submitted on</th>
+                            <th>URL</th>
+                            <th>Comments</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let u of submitted">
+                            <td>{{u.firstname}}</td>
+                            <td>{{u.sdate | date}}</td>
+                            <td>{{u.path}}</td>
+                            <td>{{u.comments}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students Not Submitted Task</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let u of notSubmitted">
+                            <td>{{u.firstname}}</td>
+                            <td>{{u.email}}</td>
+                            <td>{{u.contact}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

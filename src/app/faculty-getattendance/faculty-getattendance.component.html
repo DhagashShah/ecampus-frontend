@@ -1,0 +1,47 @@
+<div class="col-sm-12">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students</h6>
+        </div>
+
+        <form [formGroup]="myform" (ngSubmit)="submit()" *ngIf="myform">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Contact</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let u of studentBatch">
+                                <td>{{u.userid}}</td>
+                                <td>{{u.firstname}}</td>
+                                <td>{{u.lastname}}</td>
+                                <td>{{u.email}}</td>
+                                <td *ngIf="u.gender=='m'">Male</td>
+                                <td *ngIf="u.gender=='f'">FeMale</td>
+                                <td>{{u.contact}}</td>
+                                <td><input type="checkbox" name="{{u.userid}}" value="{{u.userid}}" (change)="getUserId($event,u.userid)"
+                                      [(ngModel)]="u.isselected"  class="form-check-input ml-auto" id="exampleCheck1" [ngModelOptions]="{standalone: true}" >
+                                    <label class="form-check-label" for="exampleCheck1"></label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

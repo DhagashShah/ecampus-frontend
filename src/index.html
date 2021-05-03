@@ -34,7 +34,6 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
 
-
 </head>
 
 <body>
@@ -56,17 +55,34 @@
   <script src="assets/js/sb-admin-2.min.js"></script>
   <script type="text/javascript" src="assets/js/script.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="assets/chart/Chart.min.js"></script>
-
+  
   <!-- Page level custom scripts -->
   <script src="assets/js/chart-area-demo.js"></script>
   <script src="assets/js/chart-pie-demo.js"></script>
 
   <script type="text/javascript" src="assets/js/jquery.slimscroll.js"></script>
-    <script src="assets/js/pcoded.min.js"></script>
-    <script src="assets/js/vertical-layout.min.js"></script>
-    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="assets/js/pcoded.min.js"></script>
+  <script src="assets/js/vertical-layout.min.js"></script>
+  <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script type="text/javascript">
+    $("body").on("click", "#btnExport", function () {
+      html2canvas($('#tblCustomers')[0], {
+        onrendered: function (canvas) {
+          var data = canvas.toDataURL();
+          var docDefinition = {
+            content: [{
+              image: data,
+              width: 500
+            }]
+          };
+          pdfMake.createPdf(docDefinition).download("Report.pdf");
+        }
+      });
+    });
+  </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
 </body>
 

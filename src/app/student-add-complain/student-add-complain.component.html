@@ -1,0 +1,89 @@
+<div class="col-sm-12">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Add Complain</h5>
+                <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+            </div>
+            <div class="card-block">
+                <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
+                    <div class="form-group form-default form-static-label">
+                        <input type="text" name="footer-email" class="form-control" placeholder="Complain Detail"
+                            formControlName="complain">
+                        <span class="form-bar"></span>
+                        <label class="float-label">Complain...</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light my-2 m-r-20"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Complain</h1>
+        <p class="mb-4"> <a target="_blank" href="#"></a></p>
+    
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Complain</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Detail</th>
+                                <th>Creation Date</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor="let u of complain">
+                                <td>{{u.cid}}</td>
+                                <td>{{u.complain}}</td>
+                                <td>{{u.cdate | date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Resolved Complain</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Detail</th>
+                                <th>Creation Date</th>
+                                <th>Resolved Date</th>
+                                <th>Comments (By Admin)</th>
+
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr *ngFor="let u of resolvecomplain">
+                                <td>{{u.cid}}</td>
+                                <td>{{u.complain}}</td>
+                                <td>{{u.cdate | date}}</td>
+                                <td>{{u.rdate | date}}</td>
+                                <td>{{u.comment}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

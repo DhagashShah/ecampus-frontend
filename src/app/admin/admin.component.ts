@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rut:Router,private service:DataService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    
+    
+  }
+
+  logout()
+  {
+    sessionStorage.removeItem('isAdminLogin');
+    sessionStorage.removeItem('admin');
+    this.rut.navigateByUrl('/');
   }
 
 }

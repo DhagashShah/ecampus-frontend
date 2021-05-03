@@ -3,40 +3,28 @@
     <h1 class="h3 mb-2 text-gray-800">Batches</h1>
     <p class="mb-4"> <a target="_blank" href="#"></a></p>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Batch List</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" *ngIf="batch" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Course</th>
-                            <th>Faculty</th>
-                            <th>Time</th>
-                            <th>Duration</th>
-                            <th>View Details</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr *ngFor="let u of batch">
-                            <td>{{u.batchid}}</td>
-                            <td>{{u.name}}</td>
-                            <td>{{u.coursename}}</td>
-                            <td>{{u.firstname}}</td>
-                            <td>{{u.time}}</td>
-                            <td>{{u.duration}}</td>
-                            <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/admin/getbatchbyid',u.batchid]">Click Here</button></td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="container" *ngIf="batch">
+        <div class="row">
+            <div class="col-6 col-sm-4" *ngFor="let b of batch">
+                <div class="card mb-3  " style="max-width: 18rem;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">{{b.name}}</h5>
+                        <p class="card-text">
+                            <strong>Course : </strong>{{b.coursename}}<br><br>
+                            <a class="link-primary text-primary"
+                                [routerLink]="['/admin/add-batch/edit',b.batchid]"><strong>
+                                    Edit</strong>&rarr;</a><br><br>
+                            <a class="link-primary text-primary"
+                                [routerLink]="['/admin/admin-batch-report',b.batchid]"><strong>Report</strong> &rarr;</a>
+                        </p>
+                    </div>
+                    <div class="card-header bg-transparent ">
+                        <a class="link-primary text-primary"
+                            [routerLink]="['/admin/getbatchbyid',b.batchid]"><strong>Know More</strong> &rarr;</a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </div>

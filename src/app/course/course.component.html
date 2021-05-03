@@ -9,7 +9,7 @@
                 <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
             </div>
             <div class="card-block">
-                <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
+                <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()">
                     <div class="form-group form-default form-static-label">
                         <input type="text" name="footer-email" class="form-control" placeholder="Enter Course"
                             formControlName="coursename">
@@ -31,25 +31,33 @@
         </div>
     </div>
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Courses</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h2 mb-0 text-gray-800">Course</h1>
+        
+    </div>
+    
     <p class="mb-4"> <a target="_blank" href="#"></a></p>
 
-    <div class="container" *ngIf="course">
+    <div class="container" *ngIf="course" >
         <div class="row">
             <div class="col-6 col-sm-4" *ngFor="let c of course">
                 <div class="card mb-3  " style="max-width: 18rem;">
                     <div class="card-body text-primary">
                         <h5 class="card-title">{{c.coursename}}</h5>
                         <p class="card-text">
-                            <strong>Duration : </strong>{{c.duration}}
+                            <strong>Duration : </strong>{{c.duration}}<br><br>
+                            <a class="link-primary text-primary"
+                                [routerLink]="['/admin/course/edit',c.courseid]"><strong>Edit</strong> &rarr;</a>
+
                         </p>
                     </div>
                     <div class="card-header bg-transparent ">
-                        <a class="link-primary text-primary" href="#"><strong>Know More</strong> &rarr;</a>
+                        <a class="link-primary text-primary"
+                            [routerLink]="['/admin/getcoursebyid',c.courseid]"><strong>Know More</strong> &rarr;</a>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 

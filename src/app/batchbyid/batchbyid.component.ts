@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
@@ -19,6 +19,8 @@ export class BatchbyidComponent implements OnInit {
 
    ngOnInit()
   {
+
+    
     console.log(this.routes);
     this.batchid=this.routes.snapshot.params.batchid;
     console.log(this.batchid);
@@ -35,8 +37,17 @@ export class BatchbyidComponent implements OnInit {
       userid:new FormControl("",Validators.required),
       batchid:new FormControl(this.batchid,Validators.required)
     })
+
+    
+
+    // this.myform1=new FormGroup({
+    //   userid:new FormControl("",Validators.required),
+    //   batchid:new FormControl(this.batchid,Validators.required)
+    // })
     
   }
+
+  
 
   submit()
   {
@@ -44,15 +55,24 @@ export class BatchbyidComponent implements OnInit {
     this.service.assignBatch(this.myform.value).subscribe(res =>{
       console.log(res);
       
-    })
-    
+    }) 
   }
-  add(value)
+
+  
+  add(value,value1)
   {
-    this.service.getStudentByCourse(value).then(res =>{
+    this.service.getStudentNotInAnyBatch(value,value1).then(res =>{
       this.studentCourse=res.data;      
     })
     
+  }
+
+  delete(value)
+  {
+    this.service.deleteStudentByBatch(value).subscribe(res =>{
+      console.log("Student Deleted....");
+      
+    })
   }
 
 }
