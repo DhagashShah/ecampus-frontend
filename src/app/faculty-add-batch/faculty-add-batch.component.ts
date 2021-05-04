@@ -18,6 +18,7 @@ export class FacultyAddBatchComponent implements OnInit {
   userid = 0;
   batchid = 0;
   batchdata: Batchinterface;
+  isFinish:boolean=false;
   constructor(private service: DataService, private route: ActivatedRoute, private rut: Router, private messageService: MessageService) { }
 
   async ngOnInit() {
@@ -57,7 +58,7 @@ export class FacultyAddBatchComponent implements OnInit {
         time: new FormControl("", Validators.required),
         startdate: new FormControl(new Date, Validators.required),
         enddate: new FormControl(new Date, Validators.required),
-        isfinish: new FormControl("", Validators.required)
+        isfinish: new FormControl(this.isFinish, Validators.required)
       })
     }
 

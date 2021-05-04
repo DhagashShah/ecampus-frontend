@@ -16,6 +16,7 @@ export class AddUserComponent implements OnInit {
   roles: {};
   myform: FormGroup;
   students: Userinterface;
+
   constructor(private route: ActivatedRoute, private service: DataService, private messageService: MessageService, private rut: Router) { }
 
   async ngOnInit() {
@@ -50,12 +51,9 @@ export class AddUserComponent implements OnInit {
         contact: new FormControl("", Validators.required),
         roleid: new FormControl("", Validators.required),
         active: new FormControl("", Validators.required)
-      })
+      });
+      
     }
-
-
-
-
   }
 
   submit() {
@@ -74,6 +72,7 @@ export class AddUserComponent implements OnInit {
       }
     }
     else {
+ 
       if (this.myform.valid) {
         this.service.addUser(this.myform.value).subscribe(res => {
           this.messageService.add({ severity: 'success', summary: 'User Added', detail: res.msg });

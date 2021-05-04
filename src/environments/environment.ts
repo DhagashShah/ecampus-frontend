@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  Base_URL:"http://localhost:9191/"
+  //Base_URL:"http://localhost:9191/",
+  Base_URL:"https://royal-edx.herokuapp.com/"
 };
 
 /*

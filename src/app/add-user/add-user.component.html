@@ -6,23 +6,25 @@
                 <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
             </div>
             <div class="card-block">
-                <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()">
+                <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()" >
 
                     <div class="row">
                         <div class="col">
                             <div class="form-group form-default form-static-label">
                                 <input type="text" name="footer-email" class="form-control" placeholder="First Name"
-                                    formControlName="firstname">
+                                    formControlName="firstname" >
+                                    
                                 <span class="form-bar"></span>
-                                <label class="float-label">First Name</label>
+                                <label class="float-label" for="validationCustom01">First Name</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group form-default form-static-label">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Last Name"
-                                    formControlName="lastname">
-                                <span class="form-bar"></span>
-                                <label class="float-label">Last Name</label>
+                                    formControlName="lastname" >
+                                    
+                                    <span class="form-bar"></span>
+                                <label class="float-label" >Last Name</label>
                             </div>
                         </div>
                     </div>
@@ -31,17 +33,18 @@
                         <div class="col">
                             <div class="form-group form-default form-static-label">
                                 <input type="email" name="footer-email" class="form-control" placeholder="Email"
-                                    formControlName="email">
-                                <span class="form-bar"></span>
-                                <label class="float-label">Email</label>
+                                    formControlName="email" >
+                                    <span class="form-bar"></span>
+                                <label class="float-label" >Email</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group form-default form-static-label">
                                 <input type="password" name="footer-email" class="form-control" placeholder="Password"
-                                    formControlName="password">
-                                <span class="form-bar"></span>
-                                <label class="float-label">Password</label>
+                                    formControlName="password" >
+                                    
+                                    <span class="form-bar"></span>
+                                <label class="float-label" >Password</label>
                             </div>
                         </div>
                     </div>
@@ -62,9 +65,10 @@
                         <div class="col">
                             <div class="form-group form-default form-static-label">
                                 <input type="text" name="footer-email" class="form-control" placeholder="8573895348"
-                                    formControlName="contact">
-                                <span class="form-bar"></span>
-                                <label class="float-label">Contact</label>
+                                    formControlName="contact" >
+                                    
+                                    <span class="form-bar"></span>
+                                <label class="float-label" >Contact</label>
                             </div>
                         </div>
                     </div>

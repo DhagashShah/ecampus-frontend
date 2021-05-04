@@ -18,6 +18,7 @@ export class AddBatchComponent implements OnInit {
   myform: FormGroup;
   batchid = 0;
   batch: Batchinterface;
+  isFinish:boolean=false;
   constructor(private service: DataService, private route: ActivatedRoute, private rut: Router, private messageService: MessageService) { }
 
   async ngOnInit() {
@@ -65,7 +66,7 @@ export class AddBatchComponent implements OnInit {
         time: new FormControl("", Validators.required),
         startdate: new FormControl(new Date, Validators.required),
         enddate: new FormControl(new Date, Validators.required),
-        isfinish: new FormControl("", Validators.required)
+        isfinish: new FormControl(this.isFinish, Validators.required)
       })
     }
 
@@ -87,6 +88,8 @@ export class AddBatchComponent implements OnInit {
 
     }
     else {
+      console.log(this.myform.value);
+      
       if (this.myform.valid) {
         this.service.addBatch(this.myform.value).subscribe(res => {
           this.messageService.add({ severity: 'success', summary: 'Batch Added', detail: res.msg });
