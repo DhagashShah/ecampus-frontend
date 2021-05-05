@@ -24,6 +24,8 @@ export class ForgetPasswordComponent implements OnInit {
 
   submit()
   {
+    console.log(this.myform.value.email);
+    
     if(this.myform.valid)
     {
       this.service.getForgetPassword(this.myform.value.email).then(res =>{
