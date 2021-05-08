@@ -36,11 +36,11 @@ export class FacultyAddBatchComponent implements OnInit {
         this.myform = new FormGroup({
           batchid: new FormControl(this.batchdata.batchid, Validators.required),
           userid: new FormControl(this.batchdata.userid, Validators.required),
-          courseid: new FormControl(this.batchdata.courseid, Validators.required),
-          name: new FormControl(this.batchdata.name, Validators.required),
-          duration: new FormControl(this.batchdata.duration, Validators.required),
-          descr: new FormControl(this.batchdata.descr, Validators.required),
-          time: new FormControl(this.batchdata.time, Validators.required),
+          courseid: new FormControl(this.batchdata.courseid, [Validators.required,Validators.minLength(2)]),
+          name: new FormControl(this.batchdata.name, [Validators.required,Validators.minLength(2)]),
+          duration: new FormControl(this.batchdata.duration, [Validators.required,Validators.minLength(2)]),
+          descr: new FormControl(this.batchdata.descr, [Validators.required,Validators.minLength(2)]),
+          time: new FormControl(this.batchdata.time, [Validators.required,Validators.minLength(2)]),
           startdate: new FormControl(this.batchdata.startdate, Validators.required),
           enddate: new FormControl(this.batchdata.enddate, Validators.required),
           isfinish: new FormControl(this.batchdata.isfinish, Validators.required)
@@ -52,10 +52,10 @@ export class FacultyAddBatchComponent implements OnInit {
       this.myform = new FormGroup({
         userid: new FormControl(this.userid, Validators.required),
         courseid: new FormControl("", Validators.required),
-        name: new FormControl("", Validators.required),
-        duration: new FormControl("", Validators.required),
-        descr: new FormControl("", Validators.required),
-        time: new FormControl("", Validators.required),
+        name: new FormControl("",[Validators.required,Validators.minLength(2)]),
+        duration: new FormControl("",[Validators.required,Validators.minLength(2)]),
+        descr: new FormControl("",[Validators.required,Validators.minLength(2)]),
+        time: new FormControl("",[Validators.required,Validators.minLength(2)]),
         startdate: new FormControl(new Date, Validators.required),
         enddate: new FormControl(new Date, Validators.required),
         isfinish: new FormControl(this.isFinish, Validators.required)

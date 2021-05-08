@@ -39,7 +39,7 @@ export class StudentAddDoubtComponent implements OnInit {
           did: new FormControl(this.doubt.did, Validators.required),
           sid: new FormControl(this.doubt.sid, Validators.required),
           cid: new FormControl(this.doubt.cid, Validators.required),
-          detail: new FormControl(this.doubt.detail, Validators.required),
+          detail: new FormControl(this.doubt.detail,[Validators.required,Validators.minLength(2)]),
           cdate: new FormControl(this.cdate, Validators.required),
           accepted: new FormControl(this.accepted, Validators.required)
         })
@@ -49,7 +49,7 @@ export class StudentAddDoubtComponent implements OnInit {
       this.myform = new FormGroup({
         sid: new FormControl(this.userid, Validators.required),
         cid: new FormControl("", Validators.required),
-        detail: new FormControl("", Validators.required),
+        detail: new FormControl("", [Validators.required,Validators.minLength(2)]),
         cdate: new FormControl(this.cdate, Validators.required),
         accepted: new FormControl(this.accepted, Validators.required)
       })

@@ -30,9 +30,9 @@ export class StudentAcceptDoubtComponent implements OnInit {
         this.myform = new FormGroup({
           did: new FormControl(this.doubt.did, Validators.required),
           tid: new FormControl(this.userid, Validators.required),
-          session: new FormControl(this.doubt.session, Validators.required),
+          session: new FormControl(this.doubt.session, [Validators.required,Validators.minLength(2)]),
           sdate: new FormControl(this.doubt.sdate, Validators.required),
-          stime: new FormControl(this.doubt.stime, Validators.required),
+          stime: new FormControl(this.doubt.stime, [Validators.required,Validators.minLength(2)]),
           accepted: new FormControl(this.accepted, Validators.required)
         })
       })

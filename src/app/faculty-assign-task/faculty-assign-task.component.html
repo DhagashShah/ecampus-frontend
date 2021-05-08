@@ -6,56 +6,94 @@
                 <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
             </div>
             <div class="card-block">
-                <form class="form-material" *ngIf="myform"  [formGroup]="myform" (ngSubmit)="submit()">
+                <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()">
 
                     <div class="row">
-                        
+
                         <div class="col">
-                            <div class="form-group row">
+                            <div class="form-group row" [ngClass]="{'has-error': myform.get('taskid').errors 
+                            && (myform.get('taskid').touched || myform.get('taskid').dirty)}">
                                 <div class="col-sm-12">
                                     <select name="select" class="form-control" formControlName="taskid">
                                         <option value="">Select Task</option>
-                                        <option *ngFor="let c of task" value="{{c.taskid}}">{{c.taskname}} | {{c.coursename}}</option>
+                                        <option *ngFor="let c of task" value="{{c.taskid}}">{{c.taskname}} |
+                                            {{c.coursename}}</option>
                                     </select>
+                                    <span class="help-block"
+                                        *ngIf="myform.get('taskid').errors && (myform.get('taskid').touched || myform.get('taskid').dirty)">
+                                        <span class="form-bar" style="color: red;"
+                                            *ngIf="myform.get('taskid').errors.required">Data Required</span>
+
+                                    </span>
+
                                 </div>
                             </div>
                         </div>
 
                         <div class="col">
-                            <div class="form-group row">
+                            <div class="form-group row" [ngClass]="{'has-error': myform.get('batchid').errors 
+                            && (myform.get('batchid').touched || myform.get('batchid').dirty)}">
                                 <div class="col-sm-12">
                                     <select name="select" class="form-control" formControlName="batchid">
                                         <option value="">Select Batch</option>
                                         <option *ngFor="let c of batch" value="{{c.batchid}}">{{c.name}}</option>
                                     </select>
+                                    <span class="help-block"
+                                        *ngIf="myform.get('batchid').errors && (myform.get('batchid').touched || myform.get('batchid').dirty)">
+                                        <span class="form-bar" style="color: red;"
+                                            *ngIf="myform.get('batchid').errors.required">Data Required</span>
+                                    </span>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <input type="date" name="footer-email" class="form-control" placeholder="Submission Date"
-                                    formControlName="sdate">
-                                <span class="form-bar"></span>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('sdate').errors 
+                            && (myform.get('sdate').touched || myform.get('sdate').dirty)}">
+                                <input type="date" name="footer-email" class="form-control"
+                                    placeholder="Submission Date" formControlName="sdate">
+                                <span class="help-block"
+                                    *ngIf="myform.get('sdate').errors && (myform.get('sdate').touched || myform.get('sdate').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('sdate').errors.required">Data Required</span>
+                                </span>
+
                                 <label class="float-label"></label>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('marks').errors 
+                            && (myform.get('marks').touched || myform.get('marks').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Marks"
                                     formControlName="marks">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('marks').errors && (myform.get('marks').touched || myform.get('marks').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('marks').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('marks').errors.minlength">Invalid..!</span>
+                                </span>
+
                                 <label class="float-label"></label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('comments').errors 
+                            && (myform.get('comments').touched || myform.get('comments').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Comments"
                                     formControlName="comments">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('comments').errors && (myform.get('comments').touched || myform.get('comments').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('comments').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('comments').errors.minlength">Invalid..!</span>
+                                </span>
+
                                 <label class="float-label"></label>
                             </div>
                         </div>
@@ -75,7 +113,7 @@
     <p class="mb-4"> <a target="_blank" href="#"></a></p>
 
     <!-- DataTales Example -->
-    
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Task</h6>
@@ -109,7 +147,8 @@
                             <td>{{u.sdate | date}}</td>
                             <td>{{u.marks}}</td>
                             <td>{{u.comments}}</td>
-                            <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/faculty/faculty-task-students',u.btid]">View Details</button></td>
+                            <td><button type="button" class="btn btn-outline-primary"
+                                    [routerLink]="['/faculty/faculty-task-students',u.btid]">View Details</button></td>
                             <!-- <td><button type="button" class="btn btn-outline-info" [routerLink]="['/faculty/faculty-assign-task/edit',u.btid]">Edit</button></td>
                             <td><button type="button" class="btn btn-outline-danger" (click)="delete(u.btid)">Delete</button></td> -->
                         </tr>

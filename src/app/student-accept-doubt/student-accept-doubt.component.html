@@ -8,39 +8,58 @@
             <div class="card-block">
                 <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()">
 
-                    
+
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('session').errors 
+                            && (myform.get('session').touched || myform.get('session').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Session Link"
                                     formControlName="session">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('session').errors && (myform.get('session').touched || myform.get('session').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('session').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('session').errors.minlength">
+                                        Invalid..!</span>
+                                </span>
                                 <label class="float-label">Link</label>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <input type="date" name="footer-email" class="form-control" 
-                                    formControlName="sdate">
-                                <span class="form-bar"></span>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('sdate').errors 
+                            && (myform.get('sdate').touched || myform.get('sdate').dirty)}">
+                                <input type="date" name="footer-email" class="form-control" formControlName="sdate">
                                 <label class="float-label">Session Date</label>
+                                <span class="help-block"
+                                    *ngIf="myform.get('sdate').errors && (myform.get('sdate').touched || myform.get('sdate').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('sdate').errors.required">Data Required</span>
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('stime').errors 
+                            && (myform.get('stime').touched || myform.get('stime').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="(2pm-3pm)"
                                     formControlName="stime">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('stime').errors && (myform.get('stime').touched || myform.get('stime').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('stime').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('stime').errors.minlength">Invalid..!!</span>
+                                </span>
                                 <label class="float-label">Timings</label>
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3" data-toggle="tooltip"
-                        data-placement="right" title="submit">Accept
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Accept
                     </button>
                 </form>
             </div>

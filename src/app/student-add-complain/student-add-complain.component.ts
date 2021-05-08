@@ -29,7 +29,7 @@ export class StudentAddComplainComponent implements OnInit {
 
     this.myform = new FormGroup({
       sid: new FormControl(this.userid, Validators.required),
-      complain: new FormControl("", Validators.required),
+      complain: new FormControl("", [Validators.required,Validators.minLength(2)]),
       isresolve: new FormControl(this.resolve, Validators.required),
       cdate: new FormControl(this.cdate, Validators.required)
     })

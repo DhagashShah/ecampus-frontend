@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { parse } from 'node:path';
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { DataService } from '../data.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class StudentListDoubtComponent implements OnInit {
   doubts:{};
   sid = 0;
   notaccepted:{};
-  constructor(private service: DataService) { }
+  constructor(private service: DataService,private confirmationService: ConfirmationService, private messageService: MessageService) { }
 
   ngOnInit(){
 
@@ -28,10 +29,27 @@ export class StudentListDoubtComponent implements OnInit {
   }
   delete(value)
   {
-    this.service.deleteDoubt(value).subscribe(res =>{
-      console.log("deleted",res);
-      
-    })
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.service.deleteDoubt(value).subscribe(res =>{
+          this.messageService.add({severity:'info', summary:'Confirmed', detail:'Record deleted'});
+        })
+      },
+      reject: (type) => {
+          switch(type) {
+              case ConfirmEventType.REJECT:
+                  this.messageService.add({severity:'error', summary:'Rejected', detail:'You have rejected'});
+              break;
+              case ConfirmEventType.CANCEL:
+                  this.messageService.add({severity:'warn', summary:'Cancelled', detail:'You have cancelled'});
+              break;
+          }
+      }
+  });
+    
   }
 
 }

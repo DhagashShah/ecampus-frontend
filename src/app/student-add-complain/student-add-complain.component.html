@@ -7,11 +7,16 @@
             </div>
             <div class="card-block">
                 <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
-                    <div class="form-group form-default form-static-label">
+                    <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('complain').errors 
+                && (myform.get('complain').touched || myform.get('complain').dirty)}">
                         <input type="text" name="footer-email" class="form-control" placeholder="Complain Detail"
                             formControlName="complain">
-                        <span class="form-bar"></span>
-                        <label class="float-label">Complain...</label>
+                        <span class="help-block"
+                            *ngIf="myform.get('complain').errors && (myform.get('complain').touched || myform.get('complain').dirty)">
+                            <span class="form-bar" style="color: red;" *ngIf="myform.get('complain').errors.required">Data Required</span>
+                            <span class="form-bar" style="color: red;" *ngIf="myform.get('complain').errors.minlength">
+                            Complain Must greater than 2 letters..</span>
+                        </span>
                     </div>
                     <button type="submit" class="btn btn-primary waves-effect waves-light my-2 m-r-20"
                         data-toggle="tooltip" data-placement="right" title="submit">Add
@@ -25,7 +30,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Complain</h1>
         <p class="mb-4"> <a target="_blank" href="#"></a></p>
-    
+
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -41,7 +46,7 @@
                                 <th>Creation Date</th>
                             </tr>
                         </thead>
-    
+
                         <tbody>
                             <tr *ngFor="let u of complain">
                                 <td>{{u.cid}}</td>
@@ -71,7 +76,7 @@
 
                             </tr>
                         </thead>
-    
+
                         <tbody>
                             <tr *ngFor="let u of resolvecomplain">
                                 <td>{{u.cid}}</td>

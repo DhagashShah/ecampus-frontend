@@ -29,8 +29,8 @@ export class StudentSubmitTaskComponent implements OnInit {
       userid:new FormControl(this.userid,Validators.required),
       btid:new FormControl(this.btid,Validators.required),
       sdate:new FormControl(this.sdate,Validators.required),
-      path:new FormControl("",Validators.required),
-      comments:new FormControl("",Validators.required)
+      path:new FormControl("",[Validators.required,Validators.minLength(2)]),
+      comments:new FormControl("",[Validators.required])
     })
   }
   submit()

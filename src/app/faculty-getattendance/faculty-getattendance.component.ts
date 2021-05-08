@@ -24,6 +24,7 @@ export class FacultyGetattendanceComponent implements OnInit {
     
   }
 
+  
   ngOnInit()
   {
     this.dummyDate=new Date();
@@ -51,6 +52,7 @@ export class FacultyGetattendanceComponent implements OnInit {
     if(e.target.checked)
     { 
       console.log(id+'checked....');
+      //this.selectedItems = []
       this.selectedItems.push(id);
     }
     else
@@ -62,8 +64,11 @@ export class FacultyGetattendanceComponent implements OnInit {
     
   }
 
+  
+
   submit() 
-  {    
+  { 
+    this.myform.value.userid=this.selectedItems;    
     console.log(this.myform.value);
     
     this.service.addAttendance(this.myform.value).subscribe(res =>{

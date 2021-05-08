@@ -14,22 +14,32 @@
                                 <div class="col-sm-12">
                                     <select name="select" class="form-control" formControlName="cid">
                                         <option value="">Select Course</option>
-                                        <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}</option>
+                                        <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <textarea class="form-control" placeholder="Description" formControlName="detail"></textarea>
-                                <label class="float-label">Text area Input</label>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('detail').errors 
+                            && (myform.get('detail').touched || myform.get('detail').dirty)}">
+                                <textarea class="form-control" placeholder="Description"
+                                    formControlName="detail"></textarea>
+                                <span class="help-block"
+                                    *ngIf="myform.get('detail').errors && (myform.get('detail').touched || myform.get('detail').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('detail').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('detail').errors.minlength">
+                                        Invalid!</span>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3" data-toggle="tooltip"
-                        data-placement="right" title="submit">Add
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
                     </button>
                 </form>
             </div>

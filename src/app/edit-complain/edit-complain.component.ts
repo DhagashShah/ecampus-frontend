@@ -18,6 +18,7 @@ export class EditComplainComponent implements OnInit {
   myform:FormGroup;
   dummyDate:any;
   rdate:any;
+  resolve:boolean=true;
   constructor(private rut:Router,private service:DataService,private route:ActivatedRoute,public datepipe : DatePipe,private messageService: MessageService) { }
 
   async ngOnInit()
@@ -32,10 +33,10 @@ export class EditComplainComponent implements OnInit {
         cid:new FormControl(this.complain.cid,Validators.required),
         sid:new FormControl(this.complain.sid,Validators.required),
         complain:new FormControl(this.complain.complain,Validators.required),
-        isresolve:new FormControl(this.complain.isresolve,Validators.required),
+        isresolve:new FormControl(this.resolve,Validators.required),
         cdate:new FormControl(this.complain.cdate,Validators.required),
         rdate:new FormControl(this.rdate,Validators.required),
-        comment: new FormControl(this.complain.comment,Validators.required)
+        comment: new FormControl(this.complain.comment,[Validators.required,Validators.minLength(2)])
       })
 
 

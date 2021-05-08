@@ -6,28 +6,38 @@
         </div>
         <div class="card-block">
             <form class="form-material" [formGroup]="myform" (ngSubmit)="submit()">
-                
+
                 <div class="row">
                     <div class="col">
-                        <div class="form-group form-default form-static-label">
+                        <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('path').errors 
+                        && (myform.get('path').touched || myform.get('path').dirty)}">
                             <input type="text" name="footer-email" class="form-control" placeholder="Attach Link"
                                 formControlName="path">
-                            <span class="form-bar"></span>
-                            <label class="float-label"></label>
-                        </div>        
+                            <span class="help-block"
+                                *ngIf="myform.get('path').errors && (myform.get('path').touched || myform.get('path').dirty)">
+                                <span class="form-bar" style="color: red;"
+                                    *ngIf="myform.get('path').errors.required">Data Required</span>
+                                <span class="form-bar" style="color: red;" *ngIf="myform.get('path').errors.minlength">
+                                    Invalid..!!</span>
+                            </span>
+                        </div>
                     </div>
                     <div class="col">
-                        <div class="form-group form-default form-static-label">
+                        <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('comments').errors 
+                        && (myform.get('comments').touched || myform.get('comments').dirty)}">
                             <input type="text" name="footer-email" class="form-control" placeholder="Comments"
                                 formControlName="comments">
-                            <span class="form-bar"></span>
-                            <label class="float-label"></label>
+                            <span class="help-block"
+                                *ngIf="myform.get('comments').errors && (myform.get('comments').touched || myform.get('comments').dirty)">
+                                <span class="form-bar" style="color: red;"
+                                    *ngIf="myform.get('comments').errors.required">Data Required</span>
+                            </span>
                         </div>
                     </div>
                 </div>
-                
-                <button type="submit" class="btn btn-primary waves-effect waves-light my-2 m-r-20"
-                    data-toggle="tooltip" data-placement="right" title="submit">Add
+
+                <button type="submit" class="btn btn-primary waves-effect waves-light my-2 m-r-20" data-toggle="tooltip"
+                    data-placement="right" title="submit">Add
                 </button>
             </form>
         </div>

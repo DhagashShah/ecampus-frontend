@@ -30,12 +30,12 @@ export class AddUserComponent implements OnInit {
         this.students = res.data;
         this.myform = new FormGroup({
           userid: new FormControl(this.students.userid, Validators.required),
-          firstname: new FormControl(this.students.firstname, Validators.required),
-          lastname: new FormControl(this.students.lastname, Validators.required),
-          email: new FormControl(this.students.email, Validators.required),
+          firstname: new FormControl(this.students.firstname,[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
+          lastname: new FormControl(this.students.lastname,[Validators.required,Validators.minLength(2),Validators.maxLength(10)] ),
+          email: new FormControl(this.students.email,[Validators.required,Validators.email]),
           password: new FormControl(this.students.password, Validators.required),
           gender: new FormControl(this.students.gender, Validators.required),
-          contact: new FormControl(this.students.contact, Validators.required),
+          contact: new FormControl(this.students.contact,[Validators.required,Validators.minLength(10),Validators.maxLength(10)] ),
           roleid: new FormControl(this.students.roleid, Validators.required),
           active: new FormControl(this.students.active, Validators.required)
         })
@@ -43,12 +43,12 @@ export class AddUserComponent implements OnInit {
     }
     else {
       this.myform = new FormGroup({
-        firstname: new FormControl("", Validators.required),
-        lastname: new FormControl("", Validators.required),
-        email: new FormControl("", Validators.required),
+        firstname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
+        lastname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(2)]),
+        email: new FormControl("",[Validators.required,Validators.email]),
         password: new FormControl("", Validators.required),
         gender: new FormControl("", Validators.required),
-        contact: new FormControl("", Validators.required),
+        contact: new FormControl("",[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
         roleid: new FormControl("", Validators.required),
         active: new FormControl("", Validators.required)
       });

@@ -1,11 +1,14 @@
-<div class="col-sm-12">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4" >
-        <h1 class="h2 mb-0 text-gray-800">Dates</h1>
-        <h1 class="h3 mb-0 text-gray-800" *ngIf="count">Sessions Conducted : {{count.count}}</h1>
+<div class="container-fluid">
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h2 mb-0 text-gray-800">Dates</h1>
+            <h1 class="h3 mb-0 text-gray-800" *ngIf="count">Sessions Conducted : {{count.count}}</h1>
+        </div>
     </div>
-    
-    <div class="container" *ngIf="dates">
+
+    <div class="container-fluid" *ngIf="dates">
         <div class="row">
             <div class="col-6 col-sm-4" *ngFor="let d of dates">
 

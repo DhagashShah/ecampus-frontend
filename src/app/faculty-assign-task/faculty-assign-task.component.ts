@@ -50,8 +50,8 @@ export class FacultyAssignTaskComponent implements OnInit {
           batchid: new FormControl(this.batchTaskData.batchid, Validators.required),
           adate: new FormControl(this.adate, Validators.required),
           sdate: new FormControl(this.batchTaskData.sdate, Validators.required),
-          marks: new FormControl(this.batchTaskData.marks, Validators.required),
-          comments: new FormControl(this.batchTaskData.comments, Validators.required)
+          marks: new FormControl(this.batchTaskData.marks,[Validators.required,Validators.minLength(2)]),
+          comments: new FormControl(this.batchTaskData.comments,[Validators.required,Validators.minLength(2)])
         })
 
       })
@@ -62,8 +62,8 @@ export class FacultyAssignTaskComponent implements OnInit {
         batchid: new FormControl("", Validators.required),
         adate: new FormControl(this.adate, Validators.required),
         sdate: new FormControl("", Validators.required),
-        marks: new FormControl("", Validators.required),
-        comments: new FormControl("", Validators.required)
+        marks: new FormControl("", [Validators.required,Validators.minLength(2)]),
+        comments: new FormControl("", [Validators.required,Validators.minLength(2)])
       })
     }
 

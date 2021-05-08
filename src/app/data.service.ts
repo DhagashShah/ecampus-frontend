@@ -119,9 +119,9 @@ export class DataService {
     return this.http.post(`${environment.Base_URL}getAbsentStudentByDate`,model);
   }
 
-  deleteStudentByBatch(userid:number):Observable<any>
+  deleteStudentByBatch(userid:number,batchid:number):Observable<any>
   {
-    return this.http.delete(`${environment.Base_URL}deletebatchstudent/${userid}`);
+    return this.http.delete(`${environment.Base_URL}deletebatchstudent/${userid}/${batchid}`);
   }
 
   getFacultyById(userid:number):Promise<any>

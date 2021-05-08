@@ -9,32 +9,53 @@
                 <form class="form-material" *ngIf="myform" [formGroup]="myform" (ngSubmit)="submit()">
 
                     <div class="row">
-                        
+
                         <div class="col">
-                            <div class="form-group row">
+                            <div class="form-group row" [ngClass]="{'has-error': myform.get('courseid').errors 
+                            && (myform.get('courseid').touched || myform.get('courseid').dirty)}">
                                 <div class="col-sm-12">
                                     <select name="select" class="form-control" formControlName="courseid">
                                         <option value="">Select Course</option>
-                                        <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}</option>
+                                        <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}
+                                        </option>
                                     </select>
+                                    <span class="help-block"
+                                        *ngIf="myform.get('courseid').errors && (myform.get('courseid').touched || myform.get('courseid').dirty)">
+                                        <span class="form-bar" style="color: red;"
+                                            *ngIf="myform.get('courseid').errors.required">Data Required</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('name').errors 
+                            && (myform.get('name').touched || myform.get('name').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Enter Name"
                                     formControlName="name">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('name').errors && (myform.get('name').touched || myform.get('name').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('name').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('name').errors.minlength">Invalid..!</span>
+                                </span>
                                 <label class="float-label">Batch Name</label>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('duration').errors 
+                            && (myform.get('duration').touched || myform.get('duration').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Duration"
                                     formControlName="duration">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('duration').errors && (myform.get('duration').touched || myform.get('duration').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('duration').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('duration').errors.minlength">Invalid..!</span>
+                                </span>
                                 <label class="float-label">Duration (1 month)</label>
                             </div>
                         </div>
@@ -42,16 +63,34 @@
 
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <textarea class="form-control" placeholder="Description" formControlName="descr"></textarea>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('descr').errors 
+                            && (myform.get('descr').touched || myform.get('descr').dirty)}">
+                                <textarea class="form-control" placeholder="Description"
+                                    formControlName="descr"></textarea>
+                                <span class="help-block"
+                                    *ngIf="myform.get('descr').errors && (myform.get('descr').touched || myform.get('descr').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('descr').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('descr').errors.minlength">Invalid..!</span>
+                                </span>
+
                                 <label class="float-label">Text area Input</label>
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('time').errors 
+                            && (myform.get('time').touched || myform.get('time').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="(2pm-3pm)"
                                     formControlName="time">
-                                <span class="form-bar"></span>
+                                <span class="help-block"
+                                    *ngIf="myform.get('time').errors && (myform.get('time').touched || myform.get('time').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('time').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('time').errors.minlength">Invalid..!</span>
+                                </span>
+
                                 <label class="float-label">Timings</label>
                             </div>
                         </div>
@@ -59,31 +98,43 @@
 
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <input type="date" name="footer-email" class="form-control" 
-                                    formControlName="startdate">
-                                <span class="form-bar"></span>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('startdate').errors 
+                            && (myform.get('startdate').touched || myform.get('startdate').dirty)}">
+                                <input type="date" name="footer-email" class="form-control" formControlName="startdate">
+                                <span class="help-block"
+                                    *ngIf="myform.get('startdate').errors && (myform.get('startdate').touched || myform.get('startdate').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('startdate').errors.required">Data Required</span>
+                                </span>
+                                
                                 <label class="float-label">Start Date</label>
+
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
-                                <input type="date" name="footer-email" class="form-control" 
-                                    formControlName="enddate">
-                                <span class="form-bar"></span>
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('enddate').errors 
+                            && (myform.get('enddate').touched || myform.get('enddate').dirty)}">
+                                <input type="date" name="footer-email" class="form-control" formControlName="enddate">
                                 <label class="float-label">End Date</label>
+                                <span class="help-block"
+                                    *ngIf="myform.get('enddate').errors && (myform.get('enddate').touched || myform.get('enddate').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('enddate').errors.required">Data Required</span>
+                                </span>
+
                             </div>
                         </div>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" formControlName="isfinish" value="" id="flexCheckIndeterminate">
+                        <input class="form-check-input" type="checkbox" formControlName="isfinish" value=""
+                            id="flexCheckIndeterminate">
                         <label class="form-check-label" for="flexCheckIndeterminate">
-                          IsFinish
+                            IsFinish
                         </label>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3" data-toggle="tooltip"
-                        data-placement="right" title="submit">Add
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light m-r-20 my-3"
+                        data-toggle="tooltip" data-placement="right" title="submit">Add
                     </button>
                 </form>
             </div>

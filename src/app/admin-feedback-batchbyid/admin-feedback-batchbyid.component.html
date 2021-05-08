@@ -1,11 +1,14 @@
-<div class="col-sm-12">
-    <div class="container-fluid" *ngIf="batch">
+<div class="container-fluid" *ngIf="batch">
 
+    <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">{{batch.name}}</h1>
         </div>
 
+    </div>
+
+    <div class="container-fluid">
         <div class="row">
 
             <!-- Tasks Card Example -->
@@ -200,60 +203,63 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-12">
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Feedbacks</h1>
-            <p class="mb-4"> <a target="_blank" href="#"></a></p>
-        
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        <button type="button" id="btnExport" class="btn btn-outline-primary btn-md ml-3" data-toggle="modal" >Generate Report</button>
-                    </h6>
-                </div>
-                <div class="card shadow mb-4 my-3" *ngIf="batch">
-            
-                    <div class="card-body">
-                        <div class="table-responsive" *ngIf="studentBatch">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Student</th>
-                                        <th>Explanation</th>
-                                        <th>Material</th>
-                                        <th>Punctuality</th>
-                                        <th>Communication</th>
-                                        <th>Comments</th>
-        
-                                    </tr>
-                                </thead>
-        
-                                <tbody>
-                                    <tr *ngFor="let i of studentBatch">
-                                        <td>{{i.firstname}}</td>
-                                        <td>{{i.explanation}}</td>
-                                        <td>{{i.material}}</td>
-                                        <td>{{i.punctuality}}</td>
-                                        <td>{{i.communication}}</td>
-                                        <td>{{i.comments}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-        
-        
-                </div>
-        
-            </div>
-        </div>
-
-        
-
     </div>
-    <!-- /.container-fluid -->
+
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Feedbacks</h1>
+        <p class="mb-4"> <a target="_blank" href="#"></a></p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <button type="button" id="btnExport" class="btn btn-outline-primary btn-md ml-3"
+                        data-toggle="modal">Generate Report</button>
+                </h6>
+            </div>
+            <div class="card shadow mb-4 my-3" *ngIf="batch">
+
+                <div class="card-body">
+                    <div class="table-responsive" *ngIf="studentBatch">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Explanation</th>
+                                    <th>Material</th>
+                                    <th>Punctuality</th>
+                                    <th>Communication</th>
+                                    <th>Comments</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr *ngFor="let i of studentBatch">
+                                    <td>{{i.firstname}}</td>
+                                    <td>{{i.explanation}}</td>
+                                    <td>{{i.material}}</td>
+                                    <td>{{i.punctuality}}</td>
+                                    <td>{{i.communication}}</td>
+                                    <td>{{i.comments}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
 
 </div>
+<!-- /.container-fluid -->
+
+
 <!-- End of Main Content -->

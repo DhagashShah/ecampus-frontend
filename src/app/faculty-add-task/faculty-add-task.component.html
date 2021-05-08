@@ -12,10 +12,17 @@
                         <div class="col">
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <div class="form-group form-default form-static-label">
+                                    <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('taskname').errors 
+                                    && (myform.get('taskname').touched || myform.get('taskname').dirty)}">
                                         <input type="text" name="footer-email" class="form-control"
                                             placeholder="Task Name" formControlName="taskname">
-                                        <span class="form-bar"></span>
+                                        <span class="help-block"
+                                            *ngIf="myform.get('taskname').errors && (myform.get('taskname').touched || myform.get('taskname').dirty)">
+                                            <span class="form-bar" style="color: red;"
+                                                *ngIf="myform.get('taskname').errors.required">Data Required</span>
+                                            <span class="form-bar" style="color: red;"
+                                                *ngIf="myform.get('taskname').errors.minlength">Invalid..!</span>
+                                        </span>
                                         <label class="float-label"></label>
                                     </div>
                                 </div>
@@ -23,24 +30,40 @@
                         </div>
 
                         <div class="col">
-                            <div class="form-group row">
+                            <div class="form-group row" [ngClass]="{'has-error': myform.get('courseid').errors 
+                            && (myform.get('courseid').touched || myform.get('courseid').dirty)}">
                                 <div class="col-sm-12">
                                     <select name="select" class="form-control" formControlName="courseid">
                                         <option value="">Select Course</option>
                                         <option *ngFor="let c of course" value="{{c.courseid}}">{{c.coursename}}
                                         </option>
                                     </select>
+                                    <span class="help-block"
+                                        *ngIf="myform.get('courseid').errors && (myform.get('courseid').touched || myform.get('courseid').dirty)">
+                                        <span class="form-bar" style="color: red;"
+                                            *ngIf="myform.get('courseid').errors.required">Data Required</span>
+
+                                    </span>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-group form-default form-static-label">
+                            <div class="form-group form-default form-static-label" [ngClass]="{'has-error': myform.get('path').errors 
+                            && (myform.get('path').touched || myform.get('path').dirty)}">
                                 <input type="text" name="footer-email" class="form-control" placeholder="Path/URL"
                                     formControlName="path">
-                                <span class="form-bar"></span>
                                 <label class="float-label"></label>
+                                <span class="help-block"
+                                    *ngIf="myform.get('path').errors && (myform.get('path').touched || myform.get('path').dirty)">
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('path').errors.required">Data Required</span>
+                                    <span class="form-bar" style="color: red;"
+                                        *ngIf="myform.get('path').errors.minlength">Invalid..!</span>
+                                </span>
+
                             </div>
                         </div>
                     </div>

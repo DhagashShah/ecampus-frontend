@@ -31,14 +31,14 @@ export class CourseComponent implements OnInit {
         this.myform = new FormGroup({
           courseid: new FormControl(this.coursedata.courseid, Validators.required),
           coursename: new FormControl(this.coursedata.coursename, Validators.required),
-          duration: new FormControl(this.coursedata.duration, Validators.required)
+          duration: new FormControl(this.coursedata.duration,[Validators.required,Validators.minLength(2)])
         })
       })
     }
     else {
       this.myform = new FormGroup({
-        coursename: new FormControl("", Validators.required),
-        duration: new FormControl("", Validators.required)
+        coursename: new FormControl("",[Validators.required]),
+        duration: new FormControl("", [Validators.required,Validators.minLength(2)])
       })
     }
 
