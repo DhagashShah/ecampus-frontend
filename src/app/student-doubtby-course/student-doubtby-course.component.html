@@ -1,9 +1,12 @@
-<h1 class="h3 mb-2 text-gray-800">Courses</h1>
-    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+<div class="container-fluid">
+    <div class="container-fluid">
+        <h1 class="h3 mb-2 text-gray-800">Courses</h1>
+        <p class="mb-4"> <a target="_blank" href="#"></a></p>
+    </div>
 
     <div class="container" *ngIf="course">
         <div class="row">
-            <div class="col-6 col-sm-4" *ngFor="let c of course">
+            <div class="col-sm-12 col-lg-4 col-md-4" *ngFor="let c of course">
                 <div class="card mb-3  " style="max-width: 18rem;">
                     <div class="card-body text-primary">
                         <h5 class="card-title">{{c.coursename}}</h5>
@@ -12,10 +15,13 @@
                         </p>
                     </div>
                     <div class="card-header bg-transparent ">
-                        <a class="link-primary text-primary"  [routerLink]="['/student/student-getdoubtby-courseid',c.courseid]"><strong>View Doubts</strong> &rarr;</a>
+                        <a class="link-primary text-primary"
+                            [routerLink]="['/student/student-getdoubtby-courseid',c.courseid]"><strong>View
+                                Doubts</strong> &rarr;</a>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+</div>

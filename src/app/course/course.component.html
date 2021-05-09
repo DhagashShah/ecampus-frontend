@@ -16,7 +16,8 @@
                             formControlName="coursename">
                         <span class="help-block"
                             *ngIf="myform.get('coursename').errors && (myform.get('coursename').touched || myform.get('coursename').dirty)">
-                            <span class="form-bar" style="color: red;" *ngIf="myform.get('coursename').errors.required">Data
+                            <span class="form-bar" style="color: red;"
+                                *ngIf="myform.get('coursename').errors.required">Data
                                 Required</span>
                         </span>
 
@@ -28,7 +29,8 @@
                             formControlName="duration">
                         <span class="help-block"
                             *ngIf="myform.get('duration').errors && (myform.get('duration').touched || myform.get('duration').dirty)">
-                            <span class="form-bar" style="color: red;" *ngIf="myform.get('duration').errors.required">Data
+                            <span class="form-bar" style="color: red;"
+                                *ngIf="myform.get('duration').errors.required">Data
                                 Required</span>
                             <span class="form-bar" style="color: red;"
                                 *ngIf="myform.get('duration').errors.minlength">Invalid..!</span>
@@ -49,34 +51,32 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h2 mb-0 text-gray-800">Course</h1>
         </div>
-    </div>
-    
 
-    <p class="mb-4"> <a target="_blank" href="#"></a></p>
+        <p class="mb-4"> <a target="_blank" href="#"></a></p>
 
-    <div class="container-fluid" *ngIf="course">
-        <div class="row">
-            <div class="col-6 col-sm-4" *ngFor="let c of course">
-                <div class="card mb-3  " style="max-width: 18rem;">
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">{{c.coursename}}</h5>
-                        <p class="card-text">
-                            <strong>Duration : </strong>{{c.duration}}<br><br>
+        <div class="container" *ngIf="course">
+            <div class="row">
+                <div class="col-sm-12 col-lg-4 col-md-4" *ngFor="let c of course">
+                    <div class="card mb-3  " style="max-width: 18rem;">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">{{c.coursename}}</h5>
+                            <p class="card-text">
+                                <strong>Duration : </strong>{{c.duration}}<br><br>
+                                <a class="link-primary text-primary"
+                                    [routerLink]="['/admin/course/edit',c.courseid]"><strong>Edit</strong> &rarr;</a>
+
+                            </p>
+                        </div>
+                        <div class="card-header bg-transparent ">
                             <a class="link-primary text-primary"
-                                [routerLink]="['/admin/course/edit',c.courseid]"><strong>Edit</strong> &rarr;</a>
-
-                        </p>
-                    </div>
-                    <div class="card-header bg-transparent ">
-                        <a class="link-primary text-primary"
-                            [routerLink]="['/admin/getcoursebyid',c.courseid]"><strong>Know More</strong> &rarr;</a>
+                                [routerLink]="['/admin/getcoursebyid',c.courseid]"><strong>Know More</strong> &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-
     <!-- DataTales Example -->
     <!-- <div class="card shadow mb-4">
         <div class="card-header py-3">
