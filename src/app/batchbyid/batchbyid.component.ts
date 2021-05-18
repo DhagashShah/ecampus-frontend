@@ -72,7 +72,7 @@ export class BatchbyidComponent implements OnInit {
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
-        this.service.deleteStudentByBatch(value, this.value1).subscribe(res => {
+        this.service.deleteStudentByBatch(value, this.batchid).subscribe(res => {
           this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' });
 
         })
